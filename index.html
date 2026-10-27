@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 5 - JavaScript Basics</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="task1.js" defer></script>
+  <script src="task2.js" defer></script>
+  <script src="task3.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>JavaScript Basics</h1>
+    <p>Assignment 5: DOM Manipulation &amp; Events</p>
+  </header>
+
+  <main>
+    <section class="panel" id="task1">
+      <h2>Task 1 — Higher or Lower</h2>
+      <p>Guess whether the next number will be higher or lower. Equal numbers count as a correct guess.</p>
+
+      <div class="number-box">
+        <span>Current number</span>
+        <strong id="currentNumber">—</strong>
+      </div>
+
+      <div class="button-row">
+        <button type="button" id="guessHigher">Higher</button>
+        <button type="button" id="guessLower">Lower</button>
+      </div>
+
+      <p id="gameMessage" class="message" aria-live="polite">Press Start to play.</p>
+
+      <div class="stats">
+        <p>Lives: <strong id="lives">3</strong></p>
+        <p>Current streak: <strong id="streak">0</strong></p>
+        <p>Best streak: <strong id="bestStreak">0</strong></p>
+      </div>
+
+      <button type="button" id="startGame" class="secondary">Start / Restart</button>
+    </section>
+
+    <section class="panel" id="task2">
+      <h2>Task 2 — Kanban Board</h2>
+      <p>Move cards between columns. The In Progress column can contain at most 3 cards.</p>
+
+      <div class="toolbar">
+        <label for="taskSearch">Search tasks</label>
+        <input id="taskSearch" type="search" placeholder="Search by title or tag">
+
+        <label for="prioritySort">Sort</label>
+        <select id="prioritySort">
+          <option value="default">Default order</option>
+          <option value="high">High priority first</option>
+        </select>
+      </div>
+
+      <p id="boardMessage" class="message" aria-live="polite"></p>
+      <div id="board" class="board" aria-label="Kanban board"></div>
+
+      <p class="progress-label">
+        Completed tasks: <strong id="completedCount">0</strong>/<span id="totalCount">0</span>
+      </p>
+
+      <div class="progress-track" role="progressbar"
+           aria-label="Task completion"
+           aria-valuemin="0" aria-valuemax="100"
+           aria-valuenow="0" id="progressTrack">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="task3">
+      <h2>Task 3 — Character Creator</h2>
+      <p>Enter character details. Skill values must add up to exactly 20.</p>
+
+      <div class="character-layout">
+        <form id="characterForm" novalidate>
+          <div class="field">
+            <label for="characterName">Character name</label>
+            <input id="characterName" name="characterName"
+                   required minlength="3" maxlength="16">
+            <small class="error" id="characterNameError"></small>
+          </div>
+
+          <div class="field">
+            <label for="characterClass">Class</label>
+            <select id="characterClass" name="characterClass" required>
+              <option value="">Choose a class</option>
+              <option value="Warrior">Warrior</option>
+              <option value="Mage">Mage</option>
+              <option value="Ranger">Ranger</option>
+            </select>
+            <small class="error" id="characterClassError"></small>
+          </div>
+
+          <div class="field">
+            <label for="characterColor">Card color</label>
+            <select id="characterColor" name="characterColor" required>
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="purple">Purple</option>
+            </select>
+            <small class="error" id="characterColorError"></small>
+          </div>
+
+          <div class="skills-grid">
+            <div class="field">
+              <label for="strength">Strength (1–10)</label>
+              <input id="strength" type="number" min="1" max="10" value="5" required>
+              <small class="error" id="strengthError"></small>
+            </div>
+
+            <div class="field">
+              <label for="magic">Magic (1–10)</label>
+              <input id="magic" type="number" min="1" max="10" value="5" required>
+              <small class="error" id="magicError"></small>
+            </div>
+
+            <div class="field">
+              <label for="agility">Agility (1–10)</label>
+              <input id="agility" type="number" min="1" max="10" value="5" required>
+              <small class="error" id="agilityError"></small>
+            </div>
+
+            <div class="field">
+              <label for="defense">Defense (1–10)</label>
+              <input id="defense" type="number" min="1" max="10" value="5" required>
+              <small class="error" id="defenseError"></small>
+            </div>
+          </div>
+
+          <p class="points-line">
+            Points used: <strong id="pointsUsed">20</strong>/20 ·
+            Left: <strong id="pointsLeft">0</strong>
+          </p>
+
+          <button type="submit">Create character</button>
+          <p id="formSummary" class="message" aria-live="polite"></p>
+        </form>
+
+        <aside id="characterPreview" class="character-card color-blue" aria-live="polite">
+          <h3 id="previewName">Your character</h3>
+          <p id="previewClass">Class: —</p>
+          <ul>
+            <li>Strength: <span id="previewStrength">5</span></li>
+            <li>Magic: <span id="previewMagic">5</span></li>
+            <li>Agility: <span id="previewAgility">5</span></li>
+            <li>Defense: <span id="previewDefense">5</span></li>
+          </ul>
+          <p id="previewStatus">Preview updates while you type.</p>
+        </aside>
+      </div>
+
+      <div id="createdResult" class="result-card" hidden></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Assignment 5 · JavaScript Basics</p>
+  </footer>
+</body>
+</html>
